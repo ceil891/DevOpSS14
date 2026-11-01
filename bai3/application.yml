@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ecommerce-api
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus
+  endpoint:
+    health:
+      show-details: always
+    prometheus:
+      enabled: true
+  metrics:
+    tags:
+      # DÒNG CẤU HÌNH CỐT LÕI ĐỂ FIX LỖI "NO DATA" TRÊN DASHBOARD 4701:
+      # Gán nhãn application cho toàn bộ metrics xuất ra Prometheus
+      application: ${spring.application.name}
+      environment: production
